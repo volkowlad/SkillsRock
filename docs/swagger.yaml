@@ -1,0 +1,165 @@
+basePath: /list
+definitions:
+  handler.respError:
+    properties:
+      massage:
+        type: string
+    type: object
+  sr.List:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      status:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    required:
+    - title
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: TODO-list
+  title: SkillsRock
+  version: 1.0.0
+paths:
+  /list/tasks:
+    get:
+      consumes:
+      - application/json
+      description: get list
+      operationId: get-list
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.respError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.respError'
+      summary: Get List
+      tags:
+      - TODO-list
+    post:
+      consumes:
+      - application/json
+      description: create task
+      operationId: create-task
+      parameters:
+      - description: list info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/sr.List'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.respError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.respError'
+      summary: Create task
+      tags:
+      - TODO-list
+  /list/tasks/:id:
+    delete:
+      consumes:
+      - application/json
+      description: delete task
+      operationId: delete-task
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.respError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.respError'
+      summary: Delete task
+      tags:
+      - TODO-list
+    put:
+      consumes:
+      - application/json
+      description: update task
+      operationId: update-task
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.respError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.respError'
+      summary: Update task
+      tags:
+      - TODO-list
+swagger: "2.0"
